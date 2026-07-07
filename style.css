@@ -40,3 +40,20 @@ header {
     transform: scale(1.05);
     transition: transform 0.3s ease;
 }
+.Employee-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.add_button{
+    background-color: rgb(15, 15, 58);
+    color: #f5f5f5;
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
