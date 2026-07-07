@@ -10,6 +10,12 @@ header {
     text-align: center;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
 .data-cards {
     display: flex;
     justify-content: center;
