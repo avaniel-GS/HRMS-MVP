@@ -16,7 +16,8 @@ header {
     align-items: center;
     flex-wrap: wrap;
     margin: 0 auto;
-    gap: 10px;
+    gap: 15px;
+    transition: all 0.3s ease;
 }
 
 .data-card {
@@ -25,11 +26,17 @@ header {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
 }
-.Employee-card{
+
+.data-card .heading {
     display: flex;
-    justify-content: start;
-    margin-left: 300px;
-    margin-top: 20px;
-    font-size: large;
+    align-items: center;
+    gap: 10px;
+}
+
+.data-card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
 }
