@@ -173,6 +173,9 @@ aside{
     border-radius: 5px;
     border: solid 1px;
 }
+.dashboard-icon{
+    height: 25px;
+}
 .employee-img{
     height: 25px;
 }
