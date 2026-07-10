@@ -1,0 +1,6 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <path d="M29 10H35L37 16L43 18L49 14L54 19L50 25L52 31L58 33V39L52 41L50 47L54 53L49 58L43 54L37 56L35 62H29L27 56L21 54L15 58L10 53L14 47L12 41L6 39V33L12 31L14 25L10 19L15 14L21 18L27 16L29 10Z" stroke="currentColor" stroke-width="4" stroke-linejoin="miter"></path>
+
+  <circle cx="32" cy="36" r="8" stroke="currentColor" stroke-width="4"></circle>
+</svg>

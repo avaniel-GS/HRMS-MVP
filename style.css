@@ -154,11 +154,12 @@ aside{
     flex-direction: column;
     gap: 4px;
     margin-top: 15%;
+    justify-content: center;
 }
 .aside-btn{
     display: flex;
-    height: 30px;
-    width: 55%;
+    height: 34px;
+    width: 80%;
     background-color: #fff;
     border: none;
     margin-left: 8px;
@@ -170,20 +171,17 @@ aside{
 }
 .aside-btn:hover{
     background-color: rgb(202, 133, 43);
-    border-radius: 5px;
+    border-radius: 8px;
     border: solid 1px;
 }
-.dashboard-icon{
-    height: 25px;
+
+.dashboard-icon, .employee-icon, .leave-icon{
+    height: 20px;
+    width: 20px;
 }
-.employee-img{
-    height: 25px;
-}
-.leave-icon-img{
-    height: 22px;
-    margin-right: 4px;
-}
-.settings-icon-img{
-    height: 26px;
-    margin-right: 2px;
+
+.settings-icon{
+    height: 18px;
+    width: 18px;
+    margin-bottom: 2px;
 }
