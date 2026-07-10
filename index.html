@@ -8,54 +8,77 @@
 </head>
 <body>
   <main>
+
     <header>
       <h1>HR Admin Dashboard</h1>
       <p>Manage your team and leave requests</p>
     </header>
+
     <section class="data-cards"> 
+
       <div class="data-card">
+
         <div class="heading">
           <img src="assets/people.png" alt="People Icon">
           <p>Total Headcount</p>
         </div>
+
         <div>
           <p>0</p>
         </div>
+
       </div>
+
       <div class="data-card">
+
         <div class="heading">
           <img src="assets/departments.png" alt="Departments Icon">
           <p>Departments</p>
         </div>
+
         <div>
           <p>0</p>
         </div>
+
       </div>
+
       <div class="data-card">
+
         <div class="heading">
           <img src="assets/pending.png" alt="Pending Icon">
           <p>Pending Leave</p>
         </div>
+
         <div>
           <p>0</p>
         </div>
+
       </div>
+
       <div class="data-card">
+
         <div class="heading">
           <img src="assets/approved.png" alt="Approved Icon">
           <p>Approved</p>
         </div>
+
         <div>
           <p>0</p>
         </div>
+
       </div>
+
     </section>
+
     <section class="Employee-card">
       <p>Employees</p>
       <button class="add_button" id="employee_add">+</button>
     </section>
+
     <section class="add-employee-form" id="add_employee_form">
+
       <h2>Add Employee</h2>
+
       <form id="employee_form" method="post" class="employee_form">
         <label for="name">Name</label>
         <input type="text" id="name" class="input_box required">
@@ -67,18 +90,22 @@
         <input type="email" id="email" class="input_box" required>
         <label for="start_date">Join Date</label>
         <input type="date" id="start_date" class="input_box" required>
-      <div class="form-btn">
-        <button class="save-button" type="submit">
-          Save
-        </button>
-        <button class="cancel-btn" id="cancel-btn" type="button">Cancel</button>
-      </div>
+        <div class="form-btn">
+          <button class="save-button" type="submit">
+            Save
+          </button>
+          <button class="cancel-btn" id="cancel-btn" type="button">Cancel</button>
+        </div>
       </form>
+
     </section>
+
     <section class="PLV-Card">
       <p>Pending Leave Requests</p>
     </section>
+
   </main>
+  
   <aside>
     <header class="aside-header">
       <p>HR Portal</p>
