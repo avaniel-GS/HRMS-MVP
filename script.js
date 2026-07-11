@@ -46,27 +46,51 @@ if (hamburger_btn && aside) {
 
 add_employee_form.addEventListener("submit", function(event) {
     event.preventDefault();
+
     const formData = new FormData(add_employee_form);
-    const data = {};
-    formData.forEach((value, key) => {
-        data[key] = value;
-    });
-    fetch("http://127.0.0.1:8000/add_employee", {
+    const data = {
+        name: formData.get("name")?.toString().trim() || "",
+        role: formData.get("role")?.toString().trim() || "",
+        department: formData.get("department")?.toString().trim() || "",
+        email: formData.get("email")?.toString().trim() || "",
+        date_of_joining: formData.get("date_of_joining")?.toString() || ""
+    };
+
+    fetch("http://127.0.0.1:8000/api/add_employee", {
         method: "POST",
+        mode: "cors",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Accept": "application/json"
         },
         body: JSON.stringify(data)
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
+    .then(async response => {
+        const text = await response.text();
+        let responseData = {};
+
+        try {
+            responseData = text ? JSON.parse(text) : {};
+        } catch (error) {
+            responseData = { raw: text };
+        }
+
+        if (!response.ok) {
+            throw new Error(response.status + ": " + JSON.stringify(responseData));
+        }
+
+        return { responseData, ok: response.ok };
+    })
+    .then(({ responseData, ok }) => {
+        const message = responseData.message || responseData.detail || responseData.error || "";
+        const isSuccess = ok || responseData.success === true || /success/i.test(message);
+
+        if (isSuccess) {
             alert("Employee added successfully!");
-            add_employee_form.style.display = "none";
+            add_employee_section.style.display = "none";
             add_employee_form.reset();
-            // Optionally, you can refresh the employee list here
         } else {
-            alert("Error adding employee: " + data.message);
+            alert("Error adding employee: " + (message || JSON.stringify(responseData)));
         }
     })
     .catch(error => {
