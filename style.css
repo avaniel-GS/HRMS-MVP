@@ -75,6 +75,9 @@ main {
     border-radius: 5px;
     cursor: pointer;
 }
+.hamburger-btn {
+    display: none;
+}
 .add-employee-form {
     display: none;
     flex-direction: column;
@@ -156,12 +159,12 @@ aside{
     justify-content: center;
     align-items: start;
     font-size: 25px;
+    margin-top: 25px;
 }
 .aside-options{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-top: 5%;
     margin-left: 5px;
 }
 .aside-btn{
@@ -206,5 +209,74 @@ aside{
     }
     .add-employee-form {
         width: 40%;
+    }
+}
+
+@media (max-width: 768px) {
+    .aside-btn {
+        margin-left: 5px;
+        margin-right: 40px;
+    }
+}
+
+@media (max-width: 430px) {
+    body {
+        position: relative;
+        flex-direction: column;
+    }
+
+    body.menu-open::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.35);
+        z-index: 15;
+    }
+
+    .hamburger-btn {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        position: fixed;
+        top: 10px;
+        left: 15px;
+        z-index: 30;
+        border: none;
+        border-radius: 8px;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .hamburger-btn span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background-color: rgb(15, 15, 58);
+        border-radius: 2px;
+    }
+
+    main {
+        padding-top: 70px;
+    }
+
+    aside {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 70%;
+        height: 100%;
+        display: flex;
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        z-index: 20;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    aside.open {
+        transform: translateX(0);
+    }
+
+    .add-employee-form {
+        width: 65%;
     }
 }
