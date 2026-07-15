@@ -4,6 +4,52 @@ const add_employee_form = document.getElementById("employee_form");
 const hamburger_btn = document.getElementById("hamburger_btn");
 const aside = document.querySelector("aside");
 const aside_buttons = document.querySelectorAll(".aside-btn");
+const employee_cards = document.getElementById("employee_cards");
+
+function escapeHtml(value = "") {
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+}
+
+function renderEmployeeCard(employee) {
+    if (!employee_cards) return;
+
+    const emptyState = employee_cards.querySelector(".employee-card-empty");
+    if (emptyState) {
+        emptyState.remove();
+    }
+
+    const card = document.createElement("article");
+    card.className = "employee-item-card";
+    card.innerHTML = `
+        <div class="employee-item-header">
+            <span class="employee-item-title">${escapeHtml(employee.name || "Unnamed employee")}</span>
+            <span class="employee-item-id">#${escapeHtml(employee.id ?? "")}</span>
+        </div>
+        <div class="employee-item-detail">
+            <span class="employee-item-label">Email</span>
+            <span class="employee-item-value">${escapeHtml(employee.email || "-")}</span>
+        </div>
+        <div class="employee-item-detail">
+            <span class="employee-item-label">Role</span>
+            <span class="employee-item-value">${escapeHtml(employee.role || "-")}</span>
+        </div>
+        <div class="employee-item-detail">
+            <span class="employee-item-label">Department</span>
+            <span class="employee-item-value">${escapeHtml(employee.department || "-")}</span>
+        </div>
+        <div class="employee-item-detail">
+            <span class="employee-item-label">Date of joining</span>
+            <span class="employee-item-value">${escapeHtml(employee.date_of_joining || "-")}</span>
+        </div>
+    `;
+
+    employee_cards.prepend(card);
+}
 
 employee_add_btn.addEventListener("click", function() {
     add_employee_section.style.display = "flex";
@@ -86,9 +132,15 @@ add_employee_form.addEventListener("submit", function(event) {
         const isSuccess = ok || responseData.success === true || /success/i.test(message);
 
         if (isSuccess) {
+            const employee = responseData.employee || responseData;
+
             alert("Employee added successfully!");
             add_employee_section.style.display = "none";
             add_employee_form.reset();
+
+            if (employee && typeof employee === "object") {
+                renderEmployeeCard(employee);
+            }
         } else {
             alert("Error adding employee: " + (message || JSON.stringify(responseData)));
         }

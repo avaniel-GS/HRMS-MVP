@@ -141,6 +141,79 @@ main {
     background-color: rgb(165, 165, 165);
     cursor: pointer;
 }
+.employee-list-section {
+    margin: 20px 10px 0;
+}
+
+.employee-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 8px 4px 12px;
+    scroll-snap-type: x proximity;
+}
+
+.employee-cards::-webkit-scrollbar {
+    height: 8px;
+}
+
+.employee-cards::-webkit-scrollbar-thumb {
+    background: #c4c4d0;
+    border-radius: 999px;
+}
+
+.employee-item-card {
+    flex: 0 0 260px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 170px;
+    scroll-snap-align: start;
+}
+
+.employee-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.employee-item-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #0f0f3a;
+}
+
+.employee-item-id {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.employee-item-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.employee-item-label {
+    font-size: 0.8rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.employee-item-value {
+    font-size: 0.95rem;
+    color: #111827;
+    word-break: break-word;
+}
 .PLV-Card{
     display: flex;
     align-items: center;
