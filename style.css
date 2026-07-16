@@ -37,6 +37,7 @@ main {
     margin: 0 auto;
     gap: 15px;
     transition: all 0.3s ease;
+    width: 100%;
 }
 
 .data-card {
@@ -295,13 +296,18 @@ aside{
     margin-bottom: 2px;
 }
 
-@media (max-width: 1200px) {
-    aside {
-        width: 25%;
+@media (max-width: 1024px) {
+
+    .data-card {
+        flex: 1 1 45%;
+        max-width: none;
     }
-    .aside-btn {
-        margin-left: 10px;
-        margin-right: 10px;
+
+    aside {
+        width: 20%;
+    }
+    .employee-item-card {
+        flex: 0 0 50%;
     }
 }
 
