@@ -191,9 +191,12 @@ main {
 
 .employee-item-header {
     display: flex;
-    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
     gap: 10px;
     margin-bottom: 4px;
+    width: 100%;
 }
 
 .employee-item-icon{
@@ -204,9 +207,18 @@ main {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    flex-shrink: 0;
+}
+.employee-item-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
 }
 
-.employee-item-title {
+.employee-item-name {
     font-weight: 700;
     font-size: 1rem;
     color: #0f0f3a;
@@ -215,6 +227,8 @@ main {
 .employee-item-id {
     font-size: 0.9rem;
     color: #6b7280;
+    margin-left: auto;
+    flex-shrink: 0;
 }
 
 .employee-item-detail {
@@ -230,7 +244,7 @@ main {
     height: 18px;
 }
 
-.employee-item-value {
+.employee-item-role {
     font-size: 0.95rem;
     color: #111827;
     word-break: break-word;

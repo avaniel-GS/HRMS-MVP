@@ -34,11 +34,11 @@ function renderEmployeeCard(employee) {
             <div class="employee-item-icon">
                 <p>${escapeHtml(firstLetter)}</p>
             </div>
-            <span class="employee-item-title">${escapeHtml(displayName)}</span>
+            <div class="employee-item-title">
+                <span class="employee-item-name">${escapeHtml(displayName)}</span>
+                <span class="employee-item-role">${escapeHtml(employee?.role || "-")}</span>
+            </div>
             <span class="employee-item-id">#${escapeHtml(employee?.id ?? "")}</span>
-        </div>
-        <div class="employee-item-detail">
-            <span class="employee-item-value">${escapeHtml(employee?.role || "-")}</span>
         </div>
         <div class="employee-item-detail">
             <img src="assets/department-icon.svg" alt="Department icon" class="employee-item-label">
