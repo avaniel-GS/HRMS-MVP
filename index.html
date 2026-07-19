@@ -37,95 +37,103 @@
       <span></span>
     </button>
 
-    <header>
-      <h1>HR Admin Dashboard</h1>
-      <p>Manage your team and leave requests</p>
-    </header>
+    <state id="s1">
+      <header>
+        <h1>HR Admin Dashboard</h1>
+        <p>Manage your team and leave requests</p>
+      </header>
 
-    <section class="data-cards">
+      <section class="data-cards">
 
-      <div class="data-card">
-        <div class="heading">
-          <img src="assets/people.png" alt="People Icon">
-          <p>Total Headcount</p>
+        <div class="data-card">
+          <div class="heading">
+            <img src="assets/people.png" alt="People Icon">
+            <p>Total Headcount</p>
+          </div>
+          <div>
+            <p id="total-headcount">0</p>
+          </div>
         </div>
-        <div>
-          <p id="total-headcount">0</p>
+
+        <div class="data-card">
+          <div class="heading">
+            <img src="assets/departments.png" alt="Departments Icon">
+            <p>Departments</p>
+          </div>
+          <div>
+            <p id="dept-count">0</p>
+          </div>
         </div>
-      </div>
 
-      <div class="data-card">
-        <div class="heading">
-          <img src="assets/departments.png" alt="Departments Icon">
-          <p>Departments</p>
+        <div class="data-card">
+          <div class="heading">
+            <img src="assets/pending.png" alt="Pending Icon">
+            <p>Pending Leave</p>
+          </div>
+          <div>
+            <p id="pending-leave">0</p>
+          </div>
         </div>
-        <div>
-          <p id="dept-count">0</p>
+
+        <div class="data-card">
+          <div class="heading">
+            <img src="assets/approved.png" alt="Approved Icon">
+            <p>Approved</p>
+          </div>
+          <div>
+            <p id="approved-leave">0</p>
+          </div>
         </div>
-      </div>
 
-      <div class="data-card">
-        <div class="heading">
-          <img src="assets/pending.png" alt="Pending Icon">
-          <p>Pending Leave</p>
+      </section>
+
+      <section class="Employee-card">
+        <p>Employees</p>
+        <button class="add_button" id="employee_add">+</button>
+      </section>
+
+      <section class="add-employee-form" id="add_employee_form">
+
+        <h2>Add Employee</h2>
+
+        <form id="employee_form" method="post" class="employee_form">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" class="input_box" required>
+          <label for="role">Role</label>
+          <input type="text" id="role" name="role" class="input_box" required>
+          <label for="department">Department</label>
+          <input type="text" id="department" name="department" class="input_box" required>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" class="input_box" required>
+          <label for="date_of_joining">Join Date</label>
+          <input type="date" id="date_of_joining" name="date_of_joining" class="input_box" required>
+          <div class="form-btn">
+            <button class="save-button" type="submit">
+              Save
+            </button>
+            <button class="cancel-btn" id="cancel-btn" type="button">Cancel</button>
+          </div>
+        </form>
+
+      </section>
+
+      <section class="employee-list-section" aria-label="Added employees">
+        <div class="employee-cards" id="employee_cards">
+          <div class="employee-card-empty"></div>
         </div>
-        <div>
-          <p id="pending-leave">0</p>
-        </div>
-      </div>
+      </section>
 
-      <div class="data-card">
-        <div class="heading">
-          <img src="assets/approved.png" alt="Approved Icon">
-          <p>Approved</p>
-        </div>
-        <div>
-          <p id="approved-leave">0</p>
-        </div>
-      </div>
-
-    </section>
-
-    <section class="Employee-card">
-      <p>Employees</p>
-      <button class="add_button" id="employee_add">+</button>
-    </section>
-
-    <section class="add-employee-form" id="add_employee_form">
-
-      <h2>Add Employee</h2>
-
-      <form id="employee_form" method="post" class="employee_form">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" class="input_box" required>
-        <label for="role">Role</label>
-        <input type="text" id="role" name="role" class="input_box" required>
-        <label for="department">Department</label>
-        <input type="text" id="department" name="department" class="input_box" required>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" class="input_box" required>
-        <label for="date_of_joining">Join Date</label>
-        <input type="date" id="date_of_joining" name="date_of_joining" class="input_box" required>
-        <div class="form-btn">
-          <button class="save-button" type="submit">
-            Save
-          </button>
-          <button class="cancel-btn" id="cancel-btn" type="button">Cancel</button>
-        </div>
-      </form>
-
-    </section>
-
-    <section class="employee-list-section" aria-label="Added employees">
-      <div class="employee-cards" id="employee_cards">
-        <div class="employee-card-empty"></div>
-      </div>
-    </section>
-
-    <section class="PLV-Card">
-      <p>Pending Leave Requests</p>
-    </section>
-
+      <section class="PLV-Card">
+        <p>Pending Leave Requests</p>
+      </section>
+    </state>
+    <state id="s2">
+      <section class="hello">
+        <p>Hello</p>
+      </section>
+    </state>
+    <state id="s3"></state>
+    <state id="s4"></state>
   </main>
   <script src="script.js"></script>
 </body>

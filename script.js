@@ -317,6 +317,68 @@ function get_department_count() {
     });
 }
 
+//State Management
+
+//Page States
+const s1 = document.getElementById(`s1`); // Dashboard
+const s2 = document.getElementById(`s2`); // Employees
+const s3 = document.getElementById(`s3`); // Leave
+const s4 = document.getElementById(`s4`); // Settings
+
+
+//Setting 2 - 4 to be None on the init
+s2.style.display = "none";
+s3.style.display = "none";
+s4.style.display = "none";
+
+//Button ID Assignments
+const Dashboard_Btn = document.getElementById(`aside-dashboard`);
+const Employees_Btn = document.getElementById(`aside-employees`);
+const Leave_Btn = document.getElementById(`aside-leave`);
+const Settings_Btn = document.getElementById(`aside-settings`);
+
+Dashboard_Btn.style.backgroundColor = "#F0F9FF";
+
+// Helper function to reset all views
+const hideAllSections = () => {
+  s1.style.display = "none";
+  s2.style.display = "none";
+  s3.style.display = "none";
+  s4.style.display = "none";
+  Dashboard_Btn.style.backgroundColor = '#fff';
+  Employees_Btn.style.backgroundColor = '#fff';
+  Leave_Btn.style.backgroundColor = '#fff';
+  Settings_Btn.style.backgroundColor = '#fff';
+};
+
+// Event Listeners
+Dashboard_Btn.addEventListener('click', () => {
+  hideAllSections();
+  s1.style.display = "flex"; // Assuming flex is your default layout
+  s1.style.flexDirection = "column";
+  Dashboard_Btn.style.backgroundColor = "#F0F9FF";
+});
+
+Employees_Btn.addEventListener('click', () => {
+  hideAllSections();
+  s2.style.display = "flex";
+  Employees_Btn.style.backgroundColor = "#F0F9FF";
+});
+
+Leave_Btn.addEventListener('click', () => {
+  hideAllSections();
+  s3.style.display = "flex";
+  Leave_Btn.style.backgroundColor = "#F0F9FF";
+});
+
+Settings_Btn.addEventListener('click', () => {
+  hideAllSections();
+  s4.style.display = "flex";
+  Settings_Btn.style.backgroundColor = "#F0F9FF";
+});
+
+
+
 loadEmployees();
 get_employee_headcount();
 get_department_count();
