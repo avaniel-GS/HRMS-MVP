@@ -283,5 +283,83 @@ function get_employee_headcount() {
         })
 }
 
+function get_department_count() {
+    return fetch("http://127.0.0.1:8000/api/get_department_count", {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            "Accept": "application/json"
+        }
+    })
+    .then(async response => {
+        const departmentCountText = await response.text();
+        const responseData = parseJsonResponse(departmentCountText);
+
+        if (!response.ok) {
+            throw new Error(response.status + ": " + JSON.stringify(responseData));
+        }
+
+        return responseData;
+    })
+    .then((responseData) => {
+        const departmentCountElement = document.getElementById("dept-count");
+        if (!departmentCountElement) return;
+
+        const extractCount = (value) => {
+            if (value == null) return "";
+            if (typeof value === "number" || typeof value === "string") return value;
+            if (Array.isArray(value)) {
+                const flat = value.flat(Infinity).find(item => typeof item === "number" || typeof item === "string");
+                return flat ?? "";
+            }
+            if (typeof value === "object") {
+                const candidate = value.department_count ?? value.departmentCount ?? value.count ?? value.total ?? value.value ?? value.DepartmentCount ?? value.Department_Count;
+                return extractCount(candidate);
+            }
+            return "";
+        };
+
+        const rawCount = extractCount(responseData);
+        const numericCount = Number(rawCount);
+
+        const setDepartmentCountText = (value) => {
+            if ("value" in departmentCountElement) {
+                departmentCountElement.value = value;
+            } else {
+                departmentCountElement.innerText = value;
+            }
+        };
+
+        const animateDepartmentCount = (start, end) => {
+            const stepCount = Math.max(1, end - start);
+            const duration = 1200;
+            const interval = Math.max(40, Math.floor(duration / stepCount));
+            let current = start;
+
+            setDepartmentCountText(current);
+            const timer = setInterval(() => {
+                current += 1;
+                setDepartmentCountText(current);
+                if (current >= end) {
+                    clearInterval(timer);
+                }
+            }, interval);
+        };
+
+        if (Number.isFinite(numericCount) && numericCount >= 0) {
+            const count = Math.floor(numericCount);
+            const delta = Math.min(Math.max(1, Math.ceil(count * 0.2)), 20);
+            const start = Math.max(0, count - delta);
+            animateDepartmentCount(start, count);
+        } else {
+            setDepartmentCountText(String(rawCount));
+        }
+    })
+    .catch((error) => {
+        console.error("Error loading department count:", error);
+    });
+}
+
 loadEmployees();
 get_employee_headcount();
+get_department_count();
