@@ -88,7 +88,7 @@ function parseJsonResponse(text) {
 }
 
 function loadEmployees() {
-    return fetch("http://127.0.0.1:8000/api/get_employees", {
+    return fetch("http://127.0.0.1:8000/api/get_latest_employees", {
         method: "GET",
         mode: "cors",
         headers: {
