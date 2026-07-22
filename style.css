@@ -430,3 +430,33 @@ aside{
         width: 100%;
     }
 }
+
+.s2-page{
+    display: block;
+    width: 100%;
+    padding: 4px 0 12px;
+    box-sizing: border-box;
+}
+
+.s2-header{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 0 10px;
+    border-bottom: 2px solid #dbeafe;
+}
+
+.s2-header-title{
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+    color: #0f0f3a;
+}
+
+.s2-header-subtitle{
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: #4b5563;
+}
