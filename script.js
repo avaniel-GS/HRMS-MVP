@@ -76,7 +76,6 @@ function parseJsonResponse(text) {
 }
 
 function loadEmployees(limit, offset) {
-    console.log("Fetching employees from backend...");
 
     return fetch(`http://127.0.0.1:8000/api/get_employees/limit=${limit}/offset=${offset}`, {
         method: "GET",
