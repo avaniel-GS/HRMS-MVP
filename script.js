@@ -7,8 +7,8 @@ const aside_buttons = document.querySelectorAll(".aside-btn");
 const employee_cards = document.getElementById("employee_cards");
 const s2_employee_cards = document.getElementById("s2-employee-cards");
 const employee_close_btn = document.getElementById("cancel-btn");
-let limit = 4;
-let offset = 0;
+let limit;
+let offset;
 
 function escapeHtml(value = "") {
     return String(value)
@@ -75,7 +75,7 @@ function parseJsonResponse(text) {
     }
 }
 
-function loadEmployees(limit, offset) {
+function loadEmployees(limit, offset, container) {
 
     return fetch(`http://127.0.0.1:8000/api/get_employees/limit=${limit}/offset=${offset}`, {
         method: "GET",
@@ -92,19 +92,12 @@ function loadEmployees(limit, offset) {
             throw new Error(response.status + ": " + JSON.stringify(responseData));
         }
 
-        renderEmployeeCards(employee_cards, responseData);
+        renderEmployeeCards(container, responseData);
         return responseData;
     })
     .catch((error) => {
         console.error("Error loading employees:", error);
         return {};
-    });
-}
-
-function stateTwoLoadEmployees(limit, offset) {
-    return loadEmployees(limit, offset).then((responseData) => {
-        renderEmployeeCards(s2_employee_cards, responseData);
-        return responseData;
     });
 }
 
@@ -358,7 +351,7 @@ Employees_Btn.addEventListener('click', () => {
   hideAllSections();
   s2.style.display = "flex";
   Employees_Btn.style.backgroundColor = "#F0F9FF";
-  stateTwoLoadEmployees(limit, offset);
+  loadEmployees(limit=20, offset=0, s2_employee_cards)
 });
 
 Leave_Btn.addEventListener('click', () => {
@@ -372,40 +365,6 @@ Settings_Btn.addEventListener('click', () => {
   s4.style.display = "flex";
   Settings_Btn.style.backgroundColor = "#F0F9FF";
 });
-
-//state two employee loading function
-/*
-function stateTwoLoadEmployees(limit, offset){
-    limit = 20;
-    offset = 0;
-
-    return fetch("http://127.0.0.1:8000/api/", {
-        method: "GET",
-        mode: "cors",
-        headers: {
-            "Accept": "application/json"
-        }
-    })
-    .then(async response => {
-        const text = await response.text();
-        const responseData = parseJsonResponse(text);
-
-        if (!response.ok) {
-            throw new Error(response.status + ": " + JSON.stringify(responseData));
-        }
-
-        return responseData;
-    })
-    .then((responseData) => {
-        renderEmployeeCards(Array.isArray(responseData) ? responseData : []);
-    })
-    .catch((error) => {
-        console.error("Error loading employees:", error);
-    });
-}
-*/
-
-loadEmployees(limit, offset);
-stateTwoLoadEmployees(limit, offset);
+loadEmployees(limit=4, offset=0, employee_cards);
 get_employee_headcount();
 get_department_count();
